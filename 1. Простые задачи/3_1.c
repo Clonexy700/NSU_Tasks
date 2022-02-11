@@ -12,19 +12,10 @@ int main()
 
         scanf("%f %f %f ",&a,&b,&c);
 
-
-
-        if (a==0 && b==0 && c==0) {
-          printf("MANY");
-          return 0;
-        }
-
         d=b*b-4*a*c;
 
-        if(d<0) {
+        if(d<0)
             printf("NO");
-            return 0;
-          }
 
         if (a==0)
             {
