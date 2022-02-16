@@ -9,7 +9,7 @@ int main()
   scanf("%d", &k);
   while (k > 9*d*p) {
     k -= 9*d*p;
-    d += 1;
+    d += 10;
     p *= 10;
   }
   int n = p + (k-1)/d;
