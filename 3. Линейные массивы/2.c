@@ -1,36 +1,37 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <math.h>
 
-int main()
+int main ()
 {
-    int number,i,j;
+    int n, p, *array, flag;
     freopen("input.txt","r",stdin);
     freopen("output.txt","w",stdout);
-    scanf("%d",&number);
-    int array[number+1];
-    for(i = 2; i<=number; i++)
-        array[i] = i;
-
-    i = 2;
-    while ((i*i) <= number)
+    scanf("%d", &n);
+    n = n - 1;
+    array = (int *)malloc(n * sizeof(int));
+    for (int i = 0; i < n; i++)
+        array[i] = i + 2;
+    for (int i = 0; i < sqrt(n); i++)
     {
-        if (array[i] != 0)
+        p = array[i];
+        flag = 0;
+        for (int j = i + 1; j < n; j++)
         {
-            for(j=2; j<number; j++)
+            if (!(array[j] % p))
             {
-                if (array[i]*j > number)
-                    break;
-                else
-                    array[array[i]*j]=0;
+                for (int k = j; k < n - 1; k++)
+                    array[k] = array[k+1];
+                flag = 1;
+                n--;
+                j--;
             }
         }
-        i++;
+        if (flag == 0) break;
     }
-
-    for(i = 2; i<=number; i++)
-    {
-        if (array[i]!=0)
-            printf("%d ", array[i]);
-    }
-
+    for (int i = 0; i < n; i++)
+      printf("%d ", array[i]);
+    free(array);
     return 0;
 }
