@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int DifferentDate(int d1,int m1, int y1, int d2, int m2,int y2)
+int CountDate(int d1,int m1, int y1, int d2, int m2,int y2)
 {
   int X1, X2;
 
@@ -17,7 +17,7 @@ int DifferentDate(int d1,int m1, int y1, int d2, int m2,int y2)
   return abs(X2 - X1);
 }
 
-int IsDateValidInvalid(int dd, int mm, int yy)
+int IsDateValidInvalidValidInvalidValidInvalidInvalidValidolaMne(int dd, int mm, int yy)
 {
   if(yy>=1 && yy<=9999)
     {
@@ -49,13 +49,13 @@ return 0;
 }
 
 int main() {
-  //freopen("input.txt","r",stdin);
-  //freopen("output.txt","w",stdout);
+  freopen("input.txt","r",stdin);
+  freopen("output.txt","w",stdout);
   int d1, m1, y1, d2, m2, y2;
   scanf("%d %d %d\n", &d1, &m1, &y1);
   scanf("%d %d %d", &d2, &m2, &y2);
-  if ((IsDateValidInvalid(d1, m1, y1) == 1)&&(IsDateValidInvalid(d2, m2, y2) == 1)) {
-        printf("%d", DifferentDate(d1, m1, y1, d2, m2, y2));
+  if ((IsDateValidInvalidValidInvalidValidInvalidInvalidValidolaMne(d1, m1, y1) == 1)&&(IsDateValidInvalidValidInvalidValidInvalidInvalidValidolaMne(d2, m2, y2) == 1)) {
+        printf("%d", CountDate(d1, m1, y1, d2, m2, y2));
     } else {
     printf("ERROR");
   }
