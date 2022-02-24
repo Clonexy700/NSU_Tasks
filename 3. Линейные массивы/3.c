@@ -1,33 +1,63 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main ()
+int DifferentDate(int d1,int m1, int y1, int d2, int m2,int y2)
 {
-  int days_in_months_1[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-  int days_in_months_2[12] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
-  int day_1, month_1, year_1, day_2, month_2, year_2;
-  scanf("%d %d %d\n", &day_1, &month_1, &year_1);
-  scanf("%d %d %d\n", &day_2, &month_2, &year_2);
-  int flag_1 = 0, flag_2 = 0;
-  if (year_1%4||(year_1%100==0&&year_1%400)) {
-    flag_1 = 1;
-  }
-  if (year_2%4||(year_2%100==0&&year_2%400)) {
-    flag_2 = 1;
-  }
-  if (flag_1 == 1) {
-    days_in_months_1[1] = 29;
-  }
-  if (flag_2 == 1) {
-    days_in_months_2[1] = 29;
-  }
-  if (day_1 > days_in_months_1[month_1-1]) {
+  int X1, X2;
+
+
+  m1 = (m1 + 9) % 12;
+  y1 = y1 - m1 / 10;
+  X1= 365*y1 + y1/4 - y1/100 + y1/400 + (m1*306 + 5)/10 + ( d1 - 1 );
+
+  m2 = (m2 + 9) % 12;
+  y2 = y2 - m2 / 10;
+  X2= 365*y2 + y2/4 - y2/100 + y2/400 + (m2*306 + 5)/10 + ( d2 - 1 );
+
+  return abs(X2 - X1);
+}
+
+int IsDateValidInvalid(int dd, int mm, int yy)
+{
+  if(yy>=1 && yy<=9999)
+    {
+    if(mm>=1 && mm<=12)
+    {
+        //check days
+        if((dd>=1 && dd<=31) && (mm==1 || mm==3 || mm==5 || mm==7 || mm==8 || mm==10 || mm==12))
+            return(1);
+        else if((dd>=1 && dd<=30) && (mm==4 || mm==6 || mm==9 || mm==11))
+            return(1);
+        else if((dd>=1 && dd<=28) && (mm==2))
+            return(1);
+        else if(dd==29 && mm==2 && (yy%400==0 ||(yy%4==0 && yy%100!=0)))
+            return(1);
+        else
+            return(0);
+    }
+    else
+    {
+            return(0);
+    }
+}
+else
+{
+            return(0);
+}
+
+return 0;
+}
+
+int main() {
+  //freopen("input.txt","r",stdin);
+  //freopen("output.txt","w",stdout);
+  int d1, m1, y1, d2, m2, y2;
+  scanf("%d %d %d\n", &d1, &m1, &y1);
+  scanf("%d %d %d", &d2, &m2, &y2);
+  if ((IsDateValidInvalid(d1, m1, y1) == 1)&&(IsDateValidInvalid(d2, m2, y2) == 1)) {
+        printf("%d", DifferentDate(d1, m1, y1, d2, m2, y2));
+    } else {
     printf("ERROR");
-    return 0;
   }
-  if (day_2 > days_in_months_2[month_2-1]) {
-    printf("ERROR");
-    return 0;
-  }
-  printf("1");
   return 0;
 }
