@@ -1,3 +1,7 @@
 input.txt
 output.txt
 test.c
+.vscode
+.dist
+tempCodeRunnerFile.exe
+binary_tree.exe
